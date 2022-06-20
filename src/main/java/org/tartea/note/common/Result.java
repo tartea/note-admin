@@ -21,13 +21,26 @@ public class Result<T> implements Serializable {
     public Result<T> success() {
         this.code = BaseApiCode.SUCCESS.getCode();
         this.success = true;
+        this.msg = BaseApiCode.SUCCESS.getMsg();
+        return this;
+    }
+    public Result<T> success(T data) {
         this.code = BaseApiCode.SUCCESS.getCode();
+        this.success = true;
+        this.msg = BaseApiCode.SUCCESS.getMsg();
+        this.data = data;
         return this;
     }
     public Result<T> fail() {
         this.code = BaseApiCode.FAIL.getCode();
         this.success = false;
-        this.code = BaseApiCode.FAIL.getCode();
+        this.msg = BaseApiCode.FAIL.getMsg();
+        return this;
+    }
+    public Result<T> fail(int code,String msg) {
+        this.code = code;
+        this.success = false;
+        this.msg = msg;
         return this;
     }
 

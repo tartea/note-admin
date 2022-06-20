@@ -5,6 +5,7 @@ public enum BaseApiCode {
     SUCCESS(0, "操作成功"),
     FAIL(-1, "操作失败"),
     BUSINESS_ERROR(1000, "业务异常"),
+    INVALID_FORMAT(1012, "非法数据格式"),
     UNLAW_REQUEST(1001, "非法请求");
 
     private int code;
