@@ -1,0 +1,20 @@
+
+mybatis-plus:
+  mapper-locations: classpath:mappers/*.xml # 配置mapper.xml文件路径
+  type-aliases-package: org.tartea.note.domain # 实体类包名
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+server:
+  port: 7777
+
+# mybatis 打印SQL, 配置后就会在控制台打印执行的SQL语句
+logging:
+  level:
+    com.desire.dao: debug
+spring:
+  profiles:
+    active: @profiles.active@
+    #    jsp访问器
+
