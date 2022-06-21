@@ -17,7 +17,7 @@ public class TencentCosTest {
     @Test
     public void test1() {
         // 初始化用户身份信息(secretId, secretKey)
-        COSCredentials cred = new BasicCOSCredentials("AKID1sSlnY2FSP6VdT3MO8bojNjpeCTTDk0z", "kDOIvIODm57rKXT7UaPwCCvNXQ2N6Yke");
+        COSCredentials cred = new BasicCOSCredentials("", "");
         // 设置bucket的区域, COS地域的简称请参照 https://www.qcloud.com/document/product/436/6224
         ClientConfig clientConfig = new ClientConfig(new Region("ap-nanjing"));
         // 生成cos客户端
