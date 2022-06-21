@@ -12,4 +12,11 @@ public interface NoteContentService {
     void saveNoteContent(NoteFileDTO noteFileDTO);
 
 
+    /**
+     * 获取笔记内容
+     *
+     * @param noteId
+     * @return
+     */
+    String getNoteContent(Integer noteId);
 }

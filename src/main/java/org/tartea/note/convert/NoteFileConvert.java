@@ -17,6 +17,7 @@ public class NoteFileConvert {
         noteFileDTO.setContent(noteFile.getContent());
         noteFileDTO.setCreateTime(noteFile.getCreateTime());
         noteFileDTO.setUpdateTime(noteFile.getUpdateTime());
+        noteFileDTO.setFolderId(noteFile.getFolderId());
 
         return noteFileDTO;
     }

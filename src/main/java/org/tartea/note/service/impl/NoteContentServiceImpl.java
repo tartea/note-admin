@@ -25,8 +25,17 @@ public class NoteContentServiceImpl implements NoteContentService {
         if (Objects.isNull(noteFile)) {
             throw new BusinessException("文件不存在");
         }
-        noteFile.setContent(noteFile.getContent());
+        noteFile.setContent(noteFileDTO.getContent());
         noteFile.setUpdateTime(new Date());
-        noteFileMapper.insert(NoteFileConvert.convertToNoteFile(noteFileDTO));
+        noteFileMapper.updateById(noteFile);
+    }
+
+    @Override
+    public String getNoteContent(Integer noteId) {
+        NoteFile noteFile = noteFileMapper.selectById(noteId);
+        if(Objects.isNull(noteFile)){
+            throw new BusinessException("文件不存在");
+        }
+        return noteFile.getContent();
     }
 }

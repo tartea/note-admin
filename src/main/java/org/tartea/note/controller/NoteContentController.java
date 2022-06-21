@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.tartea.note.common.BaseApiCode;
@@ -36,7 +37,7 @@ public class NoteContentController {
      * @param noteFileDTO
      */
     @RequestMapping("saveNoteContent")
-    public Result saveNoteContent(NoteFileDTO noteFileDTO) {
+    public Result saveNoteContent(@RequestBody NoteFileDTO noteFileDTO) {
         if (StringUtils.isEmpty(noteFileDTO.getContent())) {
             return new Result().fail(BaseApiCode.INVALID_FORMAT.getCode(), BaseApiCode.INVALID_FORMAT.getMsg());
         }
@@ -53,5 +54,28 @@ public class NoteContentController {
         }
         return new Result().fail();
 
+    }
+
+    /**
+     * 获取文档内容
+     *
+     * @param noteId
+     * @return
+     */
+    @RequestMapping("getNoteContent")
+    public Result getNoteContent(Integer noteId) {
+        if (Objects.isNull(noteId)) {
+            return new Result().fail(BaseApiCode.INVALID_FORMAT.getCode(), BaseApiCode.INVALID_FORMAT.getMsg());
+        }
+        try {
+            String content = noteContentService.getNoteContent(noteId);
+            return new Result().success(content);
+        } catch (BusinessException e) {
+            logger.error("获取笔记内容失败,{}", noteId, e);
+            return new Result().fail(-1, e.getMessage());
+        } catch (Exception e) {
+            logger.error("获取笔记内容失败,{}", noteId, e);
+        }
+        return new Result().fail();
     }
 }
