@@ -68,8 +68,29 @@ public class NoteFileController {
         }
         try {
             noteFileService.saveNoteFile(noteFileDTO);
+            return new Result().success();
         } catch (Exception e) {
-            logger.error("保存文件失败,{}", JSON.toJSONString(noteFileDTO) , e);
+            logger.error("保存文件失败,{}", JSON.toJSONString(noteFileDTO), e);
+        }
+        return new Result().fail();
+    }
+
+    /**
+     * 删除文件
+     *
+     * @param fileId
+     * @return
+     */
+    @RequestMapping("deleteNoteFile")
+    public Result deleteNoteFile(Integer fileId) {
+        try {
+            if (Objects.isNull(fileId)) {
+                return new Result().fail(BaseApiCode.INVALID_FORMAT.getCode(), BaseApiCode.INVALID_FORMAT.getMsg());
+            }
+            noteFileService.deleteNoteFile(fileId);
+            return new Result().success();
+        } catch (Exception e) {
+            logger.error("删除文件业务异常,{}", fileId, e);
         }
         return new Result().fail();
     }

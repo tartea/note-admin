@@ -35,4 +35,10 @@ public interface NoteFileService {
      */
     void updateNoteFile(NoteFileDTO noteFileDTO);
 
+    /**
+     * 删除文件
+     *
+     * @param fileId
+     */
+    void deleteNoteFile(Integer fileId);
 }

@@ -46,6 +46,7 @@ public class NoteContentController {
         }
         try {
             noteContentService.saveNoteContent(noteFileDTO);
+            return new Result().success();
         } catch (BusinessException e) {
             logger.error("保存文件内容失败,{}", JSON.toJSONString(noteFileDTO), e);
             return new Result().fail(-1, e.getMessage());

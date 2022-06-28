@@ -49,4 +49,9 @@ public class NoteFolderServiceImpl implements NoteFolderService {
         noteFolderDTO.setUpdateTime(new Date());
         noteFolderMapper.updateById(NoteFolderConvert.convertToNoteFolder(noteFolderDTO));
     }
+
+    @Override
+    public void deleteFolderTree(Integer folderId) {
+        noteFolderMapper.deleteById(folderId);
+    }
 }

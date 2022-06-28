@@ -27,15 +27,28 @@ public class CosConfig implements Serializable {
     private String config;
 
     /**
-     * 已经使用的cos
+     * 使用类型
      */
-    private String usedCos;
+    private String useType;
+    /**
+     * 已经使用的cos 0未使用 1使用
+     */
+    private Integer usedCos;
 
     /**
      * 创建时间
      */
     private Date createTime;
 
+    /**
+     * 创建用户
+     */
+    private String createUser;
+
+    /**
+     * 更新用户
+     */
+    private String updateUser;
     /**
      * 更新时间
      */
@@ -57,11 +70,11 @@ public class CosConfig implements Serializable {
         this.config = config;
     }
 
-    public String getUsedCos() {
+    public Integer getUsedCos() {
         return usedCos;
     }
 
-    public void setUsedCos(String usedCos) {
+    public void setUsedCos(Integer usedCos) {
         this.usedCos = usedCos;
     }
 
@@ -79,5 +92,29 @@ public class CosConfig implements Serializable {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(String createUser) {
+        this.createUser = createUser;
+    }
+
+    public String getUpdateUser() {
+        return updateUser;
+    }
+
+    public void setUpdateUser(String updateUser) {
+        this.updateUser = updateUser;
+    }
+
+    public String getUseType() {
+        return useType;
+    }
+
+    public void setUseType(String useType) {
+        this.useType = useType;
     }
 }

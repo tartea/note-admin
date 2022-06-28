@@ -47,7 +47,7 @@ public class TencentCos extends AbstractCos {
             cosClient = new COSClient(cred, clientConfig);
 
             File file = new File(fileName);
-            String key = cosConfig.getSavePath() + "/" + DateUtil.format(new Date(), "yyyyMMddHHmmssSSS") + FileNameUtil.extName(file);
+            String key = cosConfig.getSavePath() + "/" + DateUtil.format(new Date(), "yyyyMMddHHmmssSSS") + "." + FileNameUtil.extName(file);
 
             ObjectMetadata objectMetadata = new ObjectMetadata();
 //        objectMetadata.setHeader("expires", new Date(1660000000000L));

@@ -24,5 +24,17 @@ public interface NoteFolderService {
      */
     void saveNoteFolder(NoteFolderDTO noteFolderDTO);
 
+    /**
+     * 更新文件夹内容
+     *
+     * @param noteFolderDTO
+     */
     void updateNoteFolder(NoteFolderDTO noteFolderDTO);
+
+    /**
+     * 删除文件夹
+     *
+     * @param folderId
+     */
+    void deleteFolderTree(Integer folderId);
 }

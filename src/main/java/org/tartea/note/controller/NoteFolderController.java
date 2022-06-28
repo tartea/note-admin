@@ -60,8 +60,8 @@ public class NoteFolderController {
         }
         try {
             noteFolderService.updateNoteFolder(noteFolderDTO);
-        }catch (Exception e){
-            logger.error("更新文件夹内容失败，{}",JSON.toJSONString(noteFolderDTO),e);
+        } catch (Exception e) {
+            logger.error("更新文件夹内容失败，{}", JSON.toJSONString(noteFolderDTO), e);
         }
         return new Result().success();
     }
@@ -77,6 +77,23 @@ public class NoteFolderController {
             return new Result().success(noteFolderDTOS);
         } catch (Exception e) {
             logger.error("查询文件夹业务异常", e);
+        }
+        return new Result().fail();
+    }
+
+    /**
+     * 删除笔记本
+     */
+    @RequestMapping("deleteFolderTree")
+    public Result deleteFolderTree(Integer folderId) {
+        try {
+            if (Objects.isNull(folderId)) {
+                return new Result().fail(BaseApiCode.INVALID_FORMAT.getCode(), BaseApiCode.INVALID_FORMAT.getMsg());
+            }
+            noteFolderService.deleteFolderTree(folderId);
+            return new Result().success();
+        } catch (Exception e) {
+            logger.error("删除文件夹业务异常,{}", folderId, e);
         }
         return new Result().fail();
     }

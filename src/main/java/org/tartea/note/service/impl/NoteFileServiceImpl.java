@@ -26,6 +26,7 @@ public class NoteFileServiceImpl implements NoteFileService {
 
         QueryWrapper<NoteFile> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("folder_id", folderId);
+        queryWrapper.orderByDesc("create_time");
         List<NoteFile> noteFiles = noteFileMapper.selectList(queryWrapper);
         if (CollectionUtils.isEmpty(noteFiles)) {
             return Collections.emptyList();
@@ -49,5 +50,10 @@ public class NoteFileServiceImpl implements NoteFileService {
         Date date = new Date();
         noteFileDTO.setUpdateTime(date);
         noteFileMapper.updateById(NoteFileConvert.convertToNoteFile(noteFileDTO));
+    }
+
+    @Override
+    public void deleteNoteFile(Integer fileId) {
+        noteFileMapper.deleteById(fileId);
     }
 }

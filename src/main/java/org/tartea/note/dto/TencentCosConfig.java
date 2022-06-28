@@ -6,7 +6,7 @@ package org.tartea.note.dto;
  * @Author: jiawenhao
  * @Date: 2022-06-21  22:18
  */
-public class TencentCosConfig {
+public class TencentCosConfig{
 
     private String accessKey;
 
