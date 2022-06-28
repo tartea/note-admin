@@ -12,6 +12,7 @@ import org.tartea.note.mapper.CosConfigMapper;
 import org.tartea.note.service.CosConfigService;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -49,10 +50,26 @@ public class CosConfigServiceImpl implements CosConfigService {
         QueryWrapper<CosConfig> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("used_cos", CosUsedEnum.USED.getCode());
         List<CosConfig> cosConfigs = cosConfigMapper.selectList(queryWrapper);
-        if(CollectionUtil.isEmpty(cosConfigs)){
+        if (CollectionUtil.isEmpty(cosConfigs)) {
             return null;
         }
         return cosConfigs.get(0);
+    }
+
+    @Override
+    public CosConfigDTO getCosConfig(String cosType) {
+        QueryWrapper<CosConfig> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("use_type", cosType);
+        List<CosConfig> cosConfigs = cosConfigMapper.selectList(queryWrapper);
+        if (CollectionUtil.isEmpty(cosConfigs)) {
+            return null;
+        }
+        return CosConfigConvert.convertToCosConfigDTO(cosConfigs.get(0));
+    }
+
+    @Override
+    public void updateCosConfig(CosConfigDTO cosConfigDTO) {
+        cosConfigMapper.updateById(CosConfigConvert.convertToCosConfig(cosConfigDTO));
     }
 
     private void updateUsedCos() {

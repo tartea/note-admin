@@ -17,4 +17,13 @@ public class CosConfigConvert {
 
         return cosConfig;
     }
+    public static CosConfigDTO convertToCosConfigDTO(CosConfig cosConfig){
+        if(Objects.isNull(cosConfig)){
+            return null;
+        }
+        CosConfigDTO cosConfigDTO = new CosConfigDTO();
+        cosConfigDTO.setId(cosConfig.getId());
+        cosConfigDTO.setConfig(cosConfig.getConfig());
+        return cosConfigDTO;
+    }
 }

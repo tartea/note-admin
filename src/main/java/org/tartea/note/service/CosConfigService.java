@@ -31,4 +31,18 @@ public interface CosConfigService {
      * @return
      */
     CosConfig getUsedCosConfig();
+
+    /**
+     * 根据类型获取配置
+     *
+     * @param cosType
+     */
+    CosConfigDTO getCosConfig(String cosType);
+
+    /**
+     * 更新配置
+     *
+     * @param cosConfigDTO
+     */
+    void updateCosConfig(CosConfigDTO cosConfigDTO);
 }
